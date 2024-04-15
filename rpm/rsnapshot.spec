@@ -58,7 +58,7 @@ Links:
 
 
 %prep
-%setup -q -n %{name}-%{version}/upstream
+%setup -q -n %{name}-%{version}/rsnapshot
 
 # >> setup
 # << setup

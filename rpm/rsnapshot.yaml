@@ -37,7 +37,7 @@ Description: |
       Help: https://lists.sourceforge.net/lists/listinfo/rsnapshot-discuss
     %endif
 
-SetupOptions: -q -n %{name}-%{version}/upstream
+SetupOptions: -q -n %{name}-%{version}/rsnapshot
 RpmLintIgnore:
   - 'summary-too-long'
   - 'description-line-too-long'
