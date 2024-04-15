@@ -1,0 +1,11 @@
+[Unit]
+Description=rsnapshot scheduler
+After=user-session.target
+DefaultDependencies=no
+
+AssertPathExists=%h/.config/rsnapshot/rsnapshot.conf
+
+[Install]
+Also=rsnapshot-user-daily.timer
+Also=rsnapshot-user-monthly.timer
+Also=rsnapshot-user-weekly.timer

@@ -1,8 +1,13 @@
 [Unit]
 Description=rsnapshot daily timer
+After=rsnapshot-user.target
+BindsTo=rsnapshot-user.target
 
 [Timer]
 OnCalendar=05:30
 Persistent=false
 AccuracySec=12m
 Unit=rsnapshot-user@daily.service
+
+[Install]
+RequiredBy=rsnapshot-user.target

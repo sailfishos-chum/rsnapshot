@@ -17,8 +17,10 @@ Description: |
     greatly reduce the disk space required.
 
     The SailfishOS Chum package includes example configs and systemd timer units
-    to run it periodically. For them to work you must create a valid config file in
-    ~/.config/rsnapshot/rsnapshot.conf and enable the .timer units.
+    to run it periodically. For them to work you must:
+
+        1. Create a valid config file in ~/.config/rsnapshot/rsnapshot.conf
+        2. Enable and start the rsnapshot-user.target
 
     %if "%{?vendor}" == "chum"
     Title: rsnapshot
@@ -71,6 +73,7 @@ Files:
   - '%config %{_sysconfdir}/rsnapshot.conf.sailfish_*'
   - '%config %{_userunitdir}/rsnapshot-user@.service'
   - '%config %{_userunitdir}/rsnapshot-user*.timer'
+  - '%config %{_userunitdir}/rsnapshot-user.target'
 
 SubPackages:
     - Name:  vim-rsnapshot

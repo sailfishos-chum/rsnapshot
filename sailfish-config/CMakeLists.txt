@@ -34,6 +34,7 @@ install(FILES home_default.exclude rootfs_default.exclude
 
 install(FILES
         rsnapshot-user@.service
+        rsnapshot-user.target
         rsnapshot-user-daily.timer
         rsnapshot-user-monthly.timer
         rsnapshot-user-weekly.timer

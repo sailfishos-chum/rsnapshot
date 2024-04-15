@@ -1,8 +1,13 @@
 [Unit]
 Description=rsnapshot weekly timer
+After=rsnapshot-user.target
+BindsTo=rsnapshot-user.target
 
 [Timer]
 OnCalendar=Monday *-*-* 4:30:00
 Persistent=false
 AccuracySec=45m
 Unit=rsnapshot-user@weekly.service
+
+[Install]
+RequiredBy=rsnapshot-user.target
