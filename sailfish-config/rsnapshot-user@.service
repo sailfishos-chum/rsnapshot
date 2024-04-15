@@ -1,0 +1,9 @@
+[Unit]
+Description=rsnapshot %I user service
+
+[Service]
+Type=oneshot
+Nice=19
+IOSchedulingClass=idle
+ExecStartPre=/usr/bin/rsnapshot -c %h/.config/rsnapshot/rsnapshot.conf configtest
+ExecStart=/usr/bin/rsnapshot -q -c %h/.config/rsnapshot/rsnapshot.conf %I

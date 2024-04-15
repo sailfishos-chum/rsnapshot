@@ -1,0 +1,23 @@
+### ROOT FILESYSTEM
+/dev/*
+/lost+found
+/mnt/*
+/proc/*
+/run/*
+/srv/*
+/sys/*
+/tmp/*
+### ANDROID BASE FILESYSTEM
+/afs/*
+/apex/*
+/boot/*
+/config/*
+/data/*
+/dev/*
+/linkerconfig/*
+/media/*
+/metadata/*
+/odm/*
+/system/*
+/system_ext/*
+/vendor/*

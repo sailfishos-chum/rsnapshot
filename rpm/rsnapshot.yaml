@@ -1,0 +1,71 @@
+Name: rsnapshot
+Summary: A tool for backing up your data using rsync
+Version: 1.4.5
+Release: 0
+Group: Applications/Archiving
+License: GPLv2
+URL: https://rsnapshot.org/
+SCM: https://github.com/rsnapshot/rsnapshot
+Sources:
+    - '%{name}-%{version}.tar.gz'
+Description: |
+    %{summary}.
+
+    rsnapshot is a filesystem snapshot utility based on rsync. rsnapshot makes
+    it easy to make periodic snapshots of local machines, and remote machines
+    over ssh. The code makes extensive use of hard links whenever possible, to
+    greatly reduce the disk space required.
+
+    The SailfishOS Chum package includes example configs and systemd timer units
+    to run it periodically. For them to work you must create a valid config file in
+    ~/.config/rsnapshot/rsnapshot.conf and enable the .timer units.
+
+    %if "%{?vendor}" == "chum"
+    Title: rsnapshot
+    Type: console-application
+    DeveloperName: Peter G.
+    PackagedBy: nephros
+    Categories:
+     - System
+     - Utility
+    Custom:
+      Repo: https://github.com/rsnapshot/rsnapshot
+      PackagingRepo: https://github.com/sailfishos-chum/rsnapshot
+    PackageIcon: https://avatars.githubusercontent.com/u/10962189?s=200&v=4
+    Links:
+      Homepage: %{url}
+      Help: https://lists.sourceforge.net/lists/listinfo/rsnapshot-discuss
+    %endif
+
+SetupOptions: -q -n %{name}-%{version}/upstream
+RpmLintIgnore:
+  - 'summary-too-long'
+  - 'description-line-too-long'
+  - 'no-changelogname-tag'
+  - 'invalid-url'
+#Macros:
+#Patches:
+#  - 'baz'
+Requires:
+  - rsync
+  - perl
+PkgBR:
+  - cmake
+  - pkgconfig
+  - rsync
+  - lvm2
+  - openssh-clients
+  - systemd
+#PkgConfigBR:
+#  -
+#Configure: reconfigure
+#Builder: make
+BuildArch: noarch
+Files:
+  - '%license COPYING'
+  - '%{_bindir}/*'
+  - '%config %{_sysconfdir}/rsnapshot/'
+  - '%config %{_sysconfdir}/rsnapshot.conf.default'
+  - '%config %{_sysconfdir}/rsnapshot.conf.sailfish_*'
+  - '%config %{_userunitdir}/rsnapshot-user@.service'
+  - '%config %{_userunitdir}/rsnapshot-user*.timer'

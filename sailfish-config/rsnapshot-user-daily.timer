@@ -1,0 +1,8 @@
+[Unit]
+Description=rsnapshot daily timer
+
+[Timer]
+OnCalendar=05:30
+Persistent=false
+AccuracySec=12m
+Unit=rsnapshot-user@daily.service

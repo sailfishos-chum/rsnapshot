@@ -1,0 +1,75 @@
+### misc files
+.bash_history
+.sh_history
+### caches
+.cache/*
+__pycache__
+.mozilla/cache2
+OfflineCache
+OfflineStorage
+.QtWebKit
+### don't backup SSH keys
+.ssh/id_*
+.ssh/id_*.key
+.ssh/id_*.pub
+.ssh/authorized_keys
+.ssh/known_hosts
+### don't backup GPG private keys
+.gnupg/secring.gpg
+.gnupg/secring.gpg~
+.gnupg/private-keys-v1.d/*
+# SQLITE: we don't need the SHM files. We DO need -wal files!
+# Although backing up sqlite dbs while in use is dangerous in any case
+*.db-shm
+*.sqlite3-shm
+*.sqlite-shm
+### SCM dirs
+.git
+.hg
+.svn
+.bzr
+.osc
+# can't access as unprivileged user:
+/home/*/.local/share/system/privileged
+/home/*/.config/signond
+# known apps in .config needing lots of space:
+/home/*/.config/harbour-podcatcher/*png
+/home/*/.config/de.carmesinus/Podcatcher/*png
+# known apps in .local needing lots of space:
+/home/*/.local/lib/python*
+/home/*/.local/share/Yottagram/profile_photos/*
+/home/*/.local/share/amiberry/kickstarts/*
+/home/*/.local/share/be.rubdos/harbour-whisperfish/*log
+/home/*/.local/share/be.rubdos/harbour-whisperfish/storage/attachments/*
+/home/*/.local/share/be.rubdos/harbour-whisperfish/storage/avatars/*
+/home/*/.local/share/collectd/*/*
+/home/*/.local/share/cz.karry.osmscout/OSMScout/voices/*
+/home/*/.local/share/de.ygriega/fernschreiber/tdlib/thumbnails/*
+/home/*/.local/share/harbour-dailycomics/harbour-dailycomics/comics/*
+/home/*/.local/share/harbour-fernschreiber/harbour-fernschreiber/tdlib/thumbnails/*
+/home/*/.local/share/harbour-fernschreiber/harbour-fernschreiber/tdlib/thumbnails/*
+/home/*/.local/share/harbour-jupii/harbour-jupii/youtube-dl
+/home/*/.local/share/harbour-openlara/DATA/*
+/home/*/.local/share/harbour-openlara/DATA/*
+/home/*/.local/share/harbour-openlara/FMV/*
+/home/*/.local/share/harbour-openlara/FMV/*
+/home/*/.local/share/harbour-osmscout/harbour-osmscout/voices
+/home/*/.local/share/harbour-quake2/baseq2/*.pak
+/home/*/.local/share/harbour-somafm/harbour-somafm/images/*
+/home/*/.local/share/harbour-textractor/harbour-textractor/tesseract-ocr/*
+/home/*/.local/share/harbour-videoPlayer/harbour-videoPlayer/youtube-dl
+/home/*/.local/share/harbour-whisperfish/storage/attachments/*
+/home/*/.local/share/harbour-whisperfish/storage/attachments/*/*
+/home/*/.local/share/harbour-wunderfitz/*
+/home/*/.local/share/harbour-ytplayer/harbour-ytplayer/youtube-dl
+/home/*/.local/share/microtube/microtube/js/node_modules/*
+/home/*/.local/share/org.mkiol/dsnote/*data/*
+/home/*/.local/share/org.mkiol/dsnote/python/*
+/home/*/.local/share/org.mkiol/dsnote/python/site-packages/*
+/home/*/.local/share/org.sailfishos/*/.mozilla/OfflineCache
+/home/*/.local/share/org.sailfishos/*/.mozilla/cache2
+/home/*/.local/share/org.sailfishos/*/.mozilla/storage
+/home/*/.local/share/python*
+/home/*/.local/share/sailfish-backup/logs/*
+/home/*/.local/share/sailor-emoji/*
+/home/*/.local/share/tracker/data

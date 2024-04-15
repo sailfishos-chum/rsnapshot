@@ -1,0 +1,8 @@
+[Unit]
+Description=rsnapshot weekly timer
+
+[Timer]
+OnCalendar=Monday *-*-* 4:30:00
+Persistent=false
+AccuracySec=45m
+Unit=rsnapshot-user@weekly.service

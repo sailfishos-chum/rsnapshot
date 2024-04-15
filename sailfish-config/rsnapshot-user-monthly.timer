@@ -1,0 +1,8 @@
+[Unit]
+Description=rsnapshot monthly timer
+
+[Timer]
+OnCalendar=*-*-1 3:30:00
+Persistent=false
+AccuracySec=2h
+Unit=rsnapshot-user@monthly.service
