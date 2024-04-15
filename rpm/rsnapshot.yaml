@@ -3,7 +3,7 @@ Summary: A tool for backing up your data using rsync
 Version: 1.4.5
 Release: 0
 Group: Applications/Archiving
-License: GPLv2
+License: GPLv2 and ASL 2.0
 URL: https://rsnapshot.org/
 SCM: https://github.com/rsnapshot/rsnapshot
 Sources:
@@ -23,7 +23,6 @@ Description: |
     %if "%{?vendor}" == "chum"
     Title: rsnapshot
     Type: console-application
-    DeveloperName: Peter G.
     PackagedBy: nephros
     Categories:
      - System
@@ -43,7 +42,10 @@ RpmLintIgnore:
   - 'description-line-too-long'
   - 'no-changelogname-tag'
   - 'invalid-url'
-#Macros:
+Macros:
+  - 'vimpluginname;rsnapshot'
+  - 'vimplugindir;%{_datadir}/vimfiles'
+  - 'vimpluginsubdirs;after autoload colors compiler doc ftdetect ftplugin indent keymap macros plugin spell syntax'
 #Patches:
 #  - 'baz'
 Requires:
@@ -69,3 +71,14 @@ Files:
   - '%config %{_sysconfdir}/rsnapshot.conf.sailfish_*'
   - '%config %{_userunitdir}/rsnapshot-user@.service'
   - '%config %{_userunitdir}/rsnapshot-user*.timer'
+
+SubPackages:
+    - Name:  vim-rsnapshot
+      Summary: Vim configuration for rsnapshot configuration files editing
+      Group: Development/Tools
+      AsWholeName: true
+      AutoDepend: false
+      Requires:
+        - vim-filesystem
+      Files:
+        - '%{vimplugindir}/*/%{vimpluginname}.vim'

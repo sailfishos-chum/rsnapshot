@@ -7,12 +7,15 @@ Name:       rsnapshot
 
 # >> macros
 # << macros
+%define vimpluginname rsnapshot
+%define vimplugindir %{_datadir}/vimfiles
+%define vimpluginsubdirs after autoload colors compiler doc ftdetect ftplugin indent keymap macros plugin spell syntax
 
 Summary:    A tool for backing up your data using rsync
 Version:    1.4.5
 Release:    0
 Group:      Applications/Archiving
-License:    GPLv2
+License:    GPLv2 and ASL 2.0
 BuildArch:  noarch
 URL:        https://rsnapshot.org/
 Source0:    %{name}-%{version}.tar.gz
@@ -42,7 +45,6 @@ to run it periodically. For them to work you must create a valid config file in
 %if "%{?vendor}" == "chum"
 Title: rsnapshot
 Type: console-application
-DeveloperName: Peter G.
 PackagedBy: nephros
 Categories:
  - System
@@ -56,6 +58,14 @@ Links:
   Help: https://lists.sourceforge.net/lists/listinfo/rsnapshot-discuss
 %endif
 
+
+%package -n vim-rsnapshot
+Summary:    Vim configuration for rsnapshot configuration files editing
+Group:      Development/Tools
+Requires:   vim-filesystem
+
+%description -n vim-rsnapshot
+%{summary}.
 
 %prep
 %setup -q -n %{name}-%{version}/rsnapshot
@@ -93,6 +103,16 @@ rm -rf %{buildroot}%{_mandir}
 pushd ../sailfish-config
 %make_install
 popd
+
+# vim plugin
+pushd ../vim-rsnapshot
+%__install -d %{buildroot}%{vimplugindir}
+for d in %{vimpluginsubdirs}; do
+if [ -d "$d" ]; then
+cp -r "$d" %{buildroot}%{vimplugindir}/
+fi
+done
+
 # << install post
 
 %files
@@ -106,3 +126,9 @@ popd
 %config %{_userunitdir}/rsnapshot-user*.timer
 # >> files
 # << files
+
+%files -n vim-rsnapshot
+%defattr(-,root,root,-)
+%{vimplugindir}/*/%{vimpluginname}.vim
+# >> files vim-rsnapshot
+# << files vim-rsnapshot

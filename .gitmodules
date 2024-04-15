@@ -1,3 +1,6 @@
 [submodule "rsnapshot"]
 	path = rsnapshot
 	url = https://github.com/rsnapshot/rsnapshot
+[submodule "vim-rsnapshot"]
+	path = vim-rsnapshot
+	url = https://github.com/rsnapshot/vim-rsnapshot
