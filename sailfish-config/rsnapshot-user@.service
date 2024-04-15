@@ -24,6 +24,9 @@ TasksMax=100
 # lets be easily killed:
 OOMScoreAdjust=500
 
+# Handle partial success:
+SuccessExitStatus=2
+
 # patchmanager preload causes high load, lets disable
 Environment=NO_PM_PRELOAD=1
 
