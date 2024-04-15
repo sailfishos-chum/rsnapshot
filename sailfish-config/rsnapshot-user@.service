@@ -2,8 +2,30 @@
 Description=rsnapshot %I user service
 
 [Service]
-Type=oneshot
+Type=simple
+
+# Sandboxing
+NoNewPrivileges=true
+ProtectSystem=strict
+PrivateTmp=true
+
+# Resource usage:
+Slice=background.slice
+
+CPUSchedulingPolicy=idle
 Nice=19
 IOSchedulingClass=idle
+
+RuntimeMaxSec=1h
+MemoryHigh=33%
+MemoryMax=50%
+TasksMax=100
+
+# lets be easily killed:
+OOMScoreAdjust=500
+
+# patchmanager preload causes high load, lets disable
+Environment=NO_PM_PRELOAD=1
+
 ExecStartPre=/usr/bin/rsnapshot -c %h/.config/rsnapshot/rsnapshot.conf configtest
 ExecStart=/usr/bin/rsnapshot -q -c %h/.config/rsnapshot/rsnapshot.conf %I
