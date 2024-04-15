@@ -69,6 +69,41 @@ Requires:   vim-filesystem
 %description -n vim-rsnapshot
 %{summary}.
 
+%package sailfish-config
+Summary:    Sailfish configuration for %{name}
+Group:      Applications/Archiving
+Requires:   %{name} = %{version}-%{release}
+Requires:   systemd
+
+%description sailfish-config
+%{summary}.
+
+This package includes example configs and systemd units for rsnapshot.
+To run it periodically you must:
+
+    1. Create a valid config file in ~/.config/rsnapshot/rsnapshot.conf
+    2. Enable and start the rsnapshot-user.target
+
+See the examples/basic config at:
+
+    - %{_sysconfdir}/rsnapshot/'
+    - %{_sysconfdir}/rsnapshot.conf.sailfish_*'
+
+%if "%{?vendor}" == "chum"
+Title: rsnapshot services and config
+Type: console-application
+DeveloperName: nephros
+Categories:
+ - System
+ - Utility
+Custom:
+  Repo: https://github.com/sailfishos-chum/rsnapshot
+PackageIcon: https://avatars.githubusercontent.com/u/10962189?s=200&v=4
+  Bugtracker: https://github.com/sailfishos-chum/rsnapshot/issues
+Links:
+%endif
+
+
 %prep
 %setup -q -n %{name}-%{version}/rsnapshot
 
@@ -121,12 +156,7 @@ done
 %defattr(-,root,root,-)
 %license COPYING
 %{_bindir}/*
-%config %{_sysconfdir}/rsnapshot/
 %config %{_sysconfdir}/rsnapshot.conf.default
-%config %{_sysconfdir}/rsnapshot.conf.sailfish_*
-%config %{_userunitdir}/rsnapshot-user@.service
-%config %{_userunitdir}/rsnapshot-user*.timer
-%config %{_userunitdir}/rsnapshot-user.target
 # >> files
 # << files
 
@@ -135,3 +165,13 @@ done
 %{vimplugindir}/*/%{vimpluginname}.vim
 # >> files vim-rsnapshot
 # << files vim-rsnapshot
+
+%files sailfish-config
+%defattr(-,root,root,-)
+%config %{_sysconfdir}/rsnapshot/
+%config %{_sysconfdir}/rsnapshot.conf.sailfish_*
+%config %{_userunitdir}/rsnapshot-user@.service
+%config %{_userunitdir}/rsnapshot-user*.timer
+%config %{_userunitdir}/rsnapshot-user.target
+# >> files sailfish-config
+# << files sailfish-config
