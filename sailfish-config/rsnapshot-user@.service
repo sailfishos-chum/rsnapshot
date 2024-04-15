@@ -32,3 +32,7 @@ Environment=NO_PM_PRELOAD=1
 
 ExecStartPre=/usr/bin/rsnapshot -c %h/.config/rsnapshot/rsnapshot.conf configtest
 ExecStart=/usr/bin/rsnapshot -q -c %h/.config/rsnapshot/rsnapshot.conf %I
+
+# Notify the user:
+#ExecStartPost=-/usr/bin/notificationtool -o add  -A "rsnapshot" -I "icon-lock-backup" --urgency=0 --timeout=0 --category="transfer"          -h "image-path icon-m-storage" "Creating Snapshot" "Scheduled %I snapshot started" "Creating Snapshot" "Scheduled %I snapshot started"
+ExecStopPost=-/usr/bin/notificationtool  -o add  -A "rsnapshot" -I "icon-lock-backup" --urgency=0 --timeout=0 --category="transfer.complete" -h "image-path icon-m-storage" "Snapshot created" "%I snapshot operation finished: ${SERVICE_RESULT}" "Snapshot created" "%I snapshot operation finished: ${SERVICE_RESULT}"
