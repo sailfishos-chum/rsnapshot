@@ -65,9 +65,11 @@ Links:
 
 %build
 # >> build pre
+sed -i '/^autoreconf/d' autogen.sh
+./autogen.sh
 # << build pre
 
-%configure --disable-static
+%reconfigure --disable-static
 make %{?_smp_mflags}
 
 # >> build post

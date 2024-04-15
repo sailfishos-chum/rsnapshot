@@ -58,7 +58,7 @@ PkgBR:
   - systemd
 #PkgConfigBR:
 #  -
-#Configure: reconfigure
+Configure: reconfigure
 #Builder: make
 BuildArch: noarch
 Files:
