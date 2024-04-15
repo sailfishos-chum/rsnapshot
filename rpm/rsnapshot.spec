@@ -73,7 +73,7 @@ sed -i '/^autoreconf/d' autogen.sh
 make %{?_smp_mflags}
 
 # >> build post
-pushd sailfish-config
+pushd ../sailfish-config
 %cmake -DDEFAULTUSER_ENABLE=ON -DNEMO_ENABLE=ON .
 %make_build
 popd
@@ -90,7 +90,7 @@ rm -rf %{buildroot}
 rm -rf %{buildroot}%{_docdir}
 rm -rf %{buildroot}%{_mandir}
 
-pushd sailfish-config
+pushd ../sailfish-config
 %make_install
 popd
 # << install post
