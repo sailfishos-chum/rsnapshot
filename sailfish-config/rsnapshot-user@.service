@@ -1,6 +1,6 @@
 [Unit]
 Description=rsnapshot %I user service
-ConditionPathExists=%h/.config/rsnapshot/rsnapshot.conf configtest
+ConditionPathExists=%h/.config/rsnapshot/rsnapshot.conf
 
 [Service]
 Type=simple
