@@ -40,4 +40,4 @@ install(FILES
         rsnapshot-user-weekly.timer
         DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/systemd/user/
 )
-
+install(DIRECTORY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/environment/rsnapshot/)

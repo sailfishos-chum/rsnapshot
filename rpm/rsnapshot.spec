@@ -173,5 +173,6 @@ done
 %config %{_userunitdir}/rsnapshot-user@.service
 %config %{_userunitdir}/rsnapshot-user*.timer
 %config %{_userunitdir}/rsnapshot-user.target
+%dir %{_localstatedir}/environment/rsnapshot
 # >> files sailfish-config
 # << files sailfish-config
