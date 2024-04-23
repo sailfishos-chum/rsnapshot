@@ -51,6 +51,7 @@ PackagedBy: nephros
 Categories:
  - System
  - Utility
+ - Archiving
 Custom:
   Repo: https://github.com/rsnapshot/rsnapshot
   PackagingRepo: https://github.com/sailfishos-chum/rsnapshot
@@ -88,6 +89,10 @@ See the examples/basic config at:
 
     - %{_sysconfdir}/rsnapshot/'
     - %{_sysconfdir}/rsnapshot.conf.sailfish_*'
+    - %{_localstatedir}/environment/rsnapshot/'
+
+Contributions to these files are very welcome, please create issues
+and PRs at the packaging repo.
 
 %if "%{?vendor}" == "chum"
 Title: rsnapshot services and config
@@ -96,6 +101,7 @@ DeveloperName: nephros
 Categories:
  - System
  - Utility
+ - Archiving
 Custom:
   Repo: https://github.com/sailfishos-chum/rsnapshot
 PackageIcon: https://avatars.githubusercontent.com/u/10962189?s=200&v=4

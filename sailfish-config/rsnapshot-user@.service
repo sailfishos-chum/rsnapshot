@@ -25,14 +25,21 @@ TasksMax=100
 # lets be easily killed:
 OOMScoreAdjust=500
 
-# Handle partial success:
+# Accept partial success with warnings as success:
 SuccessExitStatus=2
 
-# patchmanager preload causes high load, lets disable
+# patchmanager preload causes high load on many concurrent accesses, lets disable
 Environment=NO_PM_PRELOAD=1
 
-ExecStartPre=/usr/bin/rsnapshot -c %h/.config/rsnapshot/rsnapshot.conf configtest
-ExecStart=/usr/bin/rsnapshot -q -c %h/.config/rsnapshot/rsnapshot.conf %I
+# path to main config file. If you change this, note the ConditionPathExists line above, AND the asserts in the related unit files!
+Environment=RS_CONFIG_FILE=%h/.config/rsnapshot/rsnapshot.conf
+
+# enable overrides:
+EnvironmentFile=-/var/lib/environment/rsnapshot/*.conf
+EnvironmentFile=-%h/.config/systemd/user/%N.env
+
+ExecStartPre=/usr/bin/rsnapshot -q -c ${RS_CONFIG_FILE} configtest
+ExecStart=/usr/bin/rsnapshot -c ${RS_CONFIG_FILE} %I
 
 # Notify the user:
 #ExecStartPost=-/usr/bin/notificationtool -o add  -A "rsnapshot" -I "icon-lock-backup" --urgency=0 --timeout=0 --category="transfer"          -h "image-path icon-m-storage" "Creating Snapshot" "Scheduled %I snapshot started" "Creating Snapshot" "Scheduled %I snapshot started"

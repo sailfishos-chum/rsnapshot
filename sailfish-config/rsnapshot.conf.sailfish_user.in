@@ -243,13 +243,13 @@ link_dest	1
 
 # SAILFISH
 #backup	/home/@USER@/		localhost/
-backup	/home/@USER@/.config/		@USER@/dot-config/
-backup	/home/@USER@/.local/		@USER@/dot-local/
-backup	/home/@USER@/.bash_profile	@USER@/dotfiles/
+backup	/home/@USER@/.config/		home/dot-config/
+backup	/home/@USER@/.local/		home/dot-local/
+#backup	/home/@USER@/.bash_profile	home/dotfiles/
 # sync profiles are in .cache in SFOS <4.5
-backup	/home/@USER@/.cache/msyncd/	@USER@/dot-cache/
+backup	/home/@USER@/.cache/msyncd/	home/dot-cache/
 # repository config
-backup	/etc/ssu/ssu.ini		@USER@/rootfs/
+backup	/etc/ssu/ssu.ini		rootfs/
 
 # EXAMPLE.COM
 #backup_exec	/bin/date "+ backup of example.com started at %c"

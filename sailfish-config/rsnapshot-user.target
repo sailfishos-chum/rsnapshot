@@ -1,5 +1,5 @@
 [Unit]
-Description=rsnapshot scheduler
+Description=rsnapshot scheduler. Enabling or starting this will enable/start the necessary timers.
 After=user-session.target
 DefaultDependencies=no
 
